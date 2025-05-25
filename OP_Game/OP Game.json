@@ -552,6 +552,38 @@
         "name": "tile033.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "tile0003.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "tile0003.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "tile0020.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "tile0020.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "tile0021.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "tile0021.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "tile0022.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "tile0022.png",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -622,6 +654,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/rectanglemovement"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/health"
     }
   ],
   "externalLayouts": []

@@ -151,7 +151,6 @@
       "colorG": 176,
       "colorR": 74,
       "creationTime": 0,
-      "folded": true,
       "name": "Attacking",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -274,7 +273,7 @@
               },
               "parameters": [
                 "",
-                "Attack_Collision",
+                "Att_Collide_Player",
                 "Sensei.X()",
                 "Sensei.Y()",
                 ""
@@ -285,7 +284,7 @@
                 "value": "FlippableCapability::FlippableBehavior::FlipX"
               },
               "parameters": [
-                "Attack_Collision",
+                "Att_Collide_Player",
                 "Flippable",
                 "no"
               ]
@@ -311,7 +310,7 @@
                     "value": "FlippableCapability::FlippableBehavior::FlipX"
                   },
                   "parameters": [
-                    "Attack_Collision",
+                    "Att_Collide_Player",
                     "Flippable",
                     "yes"
                   ]
@@ -326,7 +325,59 @@
                     "value": "CollisionNP"
                   },
                   "parameters": [
-                    "Attack_Collision",
+                    "Att_Collide_Player",
+                    "Enemy",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "Animation",
+                    "=",
+                    "\"Hurt\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AddForceAL"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "Sensei.AngleToObject(Enemy)",
+                    "500",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringObjectVariable"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "Status",
+                    "=",
+                    "\"Hurt\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Att_Collide_Player",
                     "Plant",
                     "",
                     "",
@@ -359,7 +410,7 @@
                 "value": "Delete"
               },
               "parameters": [
-                "Attack_Collision",
+                "Att_Collide_Player",
                 ""
               ]
             }

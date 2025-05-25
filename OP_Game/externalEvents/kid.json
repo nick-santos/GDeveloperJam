@@ -7,7 +7,6 @@
       "colorG": 176,
       "colorR": 74,
       "creationTime": 0,
-      "folded": true,
       "name": "Common Behaviour",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -127,7 +126,6 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "folded": true,
           "name": "Direction Matching",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -202,6 +200,7 @@
       "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
+          "disabled": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
@@ -286,6 +285,7 @@
           "actions": [],
           "events": [
             {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
