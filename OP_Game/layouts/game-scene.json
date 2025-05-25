@@ -279,7 +279,7 @@
       "height": 43,
       "keepRatio": true,
       "layer": "",
-      "name": "Desgracada",
+      "name": "Kid",
       "persistentUuid": "15588874-e6c2-46ae-8aae-04a8337b0012",
       "width": 43,
       "x": 389,
@@ -287,26 +287,20 @@
       "zOrder": 9,
       "numberProperties": [],
       "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "FleeingRadius",
-          "type": "number",
-          "value": 500
-        }
-      ]
+      "initialVariables": []
     },
     {
       "angle": 0,
       "customSize": true,
       "depth": 2,
-      "height": 217,
+      "height": 229,
       "keepRatio": true,
       "layer": "",
       "name": "Enemy",
-      "persistentUuid": "ed7ec2b2-df4b-4bc6-97f5-b6142b673e8f",
-      "width": 217,
-      "x": 560,
-      "y": 160,
+      "persistentUuid": "d8eda399-dfd5-4016-a7f0-0319935c165a",
+      "width": 229,
+      "x": 544,
+      "y": 135,
       "zOrder": 10,
       "numberProperties": [],
       "stringProperties": [],
@@ -396,7 +390,14 @@
       "width": 32,
       "variables": [],
       "effects": [],
-      "behaviors": []
+      "behaviors": [
+        {
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 2,
+          "impassable": true
+        }
+      ]
     },
     {
       "adaptCollisionMaskAutomatically": false,
@@ -406,7 +407,14 @@
       "updateIfNotVisible": false,
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 2,
+          "impassable": true
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -2369,16 +2377,37 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "Kid_Girl",
+      "name": "Kid",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [],
+      "variables": [
+        {
+          "name": "Status",
+          "type": "string",
+          "value": "Following"
+        },
+        {
+          "name": "StatusUpdate",
+          "type": "boolean",
+          "value": false
+        },
+        {
+          "name": "FleeingRadius",
+          "type": "number",
+          "value": 100
+        },
+        {
+          "name": "IsFleeing",
+          "type": "boolean",
+          "value": false
+        }
+      ],
       "effects": [],
       "behaviors": [
         {
+          "acceleration": 500,
           "name": "Pathfinding",
           "type": "PathfindingBehavior::PathfindingBehavior",
-          "acceleration": 300,
           "allowDiagonals": true,
           "angleOffset": 0,
           "angularMaxSpeed": 180,
@@ -2824,21 +2853,10 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "Desgracada",
+      "name": "Kid_Girl",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [
-        {
-          "name": "Status",
-          "type": "string",
-          "value": "Fleeing"
-        },
-        {
-          "name": "FleeingRadius",
-          "type": "number",
-          "value": 500
-        }
-      ],
+      "variables": [],
       "effects": [],
       "behaviors": [
         {
@@ -4829,7 +4847,7 @@
         "objectName": "Att_Collide_Enemy"
       },
       {
-        "objectName": "Desgracada"
+        "objectName": ""
       },
       {
         "objectName": "Enemy"
@@ -4858,7 +4876,10 @@
         "objectName": "NewText"
       },
       {
-        "objectName": "Kid_Girl"
+        "objectName": "Kid"
+      },
+      {
+        "objectName": "Attack_Collision"
       }
     ]
   },
@@ -5020,6 +5041,10 @@
     {
       "name": "Pathfinding",
       "type": "PathfindingBehavior::PathfindingBehavior"
+    },
+    {
+      "name": "PathfindingObstacle",
+      "type": "PathfindingBehavior::PathfindingObstacleBehavior"
     },
     {
       "name": "Resizable",

@@ -688,6 +688,17 @@
               "conditions": [
                 {
                   "type": {
+                    "value": "BooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "StatusUpdate",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "KeyFromTextPressed"
                   },
                   "parameters": [
@@ -700,20 +711,37 @@
                     "value": "StringObjectVariable"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Status",
                     "=",
                     "\"Fleeing\""
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
+                    "value": "SetBooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "StatusUpdate",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "SetStringObjectVariable"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Status",
                     "=",
                     "\"Following\""
@@ -726,6 +754,17 @@
               "conditions": [
                 {
                   "type": {
+                    "value": "BooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "StatusUpdate",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "KeyFromTextPressed"
                   },
                   "parameters": [
@@ -738,23 +777,67 @@
                     "value": "StringObjectVariable"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Status",
                     "=",
                     "\"Following\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "StatusUpdate",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "Status",
+                    "=",
+                    "\"Fleeing\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextReleased"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "\"e\""
                   ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetStringObjectVariable"
+                    "value": "SetBooleanObjectVariable"
                   },
                   "parameters": [
-                    "Desgracada",
-                    "Status",
-                    "=",
-                    "\"Fleeing\""
+                    "Kid",
+                    "StatusUpdate",
+                    "False",
+                    ""
                   ]
                 }
               ]

@@ -30,7 +30,7 @@
                     "value": "SeparateFromObjects"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Wall",
                     ""
                   ]
@@ -40,7 +40,7 @@
                     "value": "SeparateFromObjects"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Plant",
                     ""
                   ]
@@ -68,7 +68,7 @@
                     "value": "PathfindingBehavior::Speed"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Pathfinding",
                     "=",
                     "0"
@@ -81,7 +81,7 @@
                     "value": "AnimatableCapability::AnimatableBehavior::SetName"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Animation",
                     "=",
                     "\"Idle\""
@@ -97,7 +97,7 @@
                     "value": "PathfindingBehavior::Speed"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Pathfinding",
                     ">",
                     "0"
@@ -110,7 +110,7 @@
                     "value": "AnimatableCapability::AnimatableBehavior::SetName"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Animation",
                     "=",
                     "\"Walking\""
@@ -126,6 +126,7 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
+          "folded": true,
           "name": "Direction Matching",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -140,7 +141,7 @@
                   "parameters": [
                     "Sensei",
                     ">=",
-                    "Desgracada.CenterX()"
+                    "Kid.CenterX()"
                   ]
                 }
               ],
@@ -150,7 +151,7 @@
                     "value": "FlippableCapability::FlippableBehavior::FlipX"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Flippable",
                     "no"
                   ]
@@ -167,7 +168,7 @@
                   "parameters": [
                     "Sensei",
                     "<",
-                    "Desgracada.CenterX()"
+                    "Kid.CenterX()"
                   ]
                 }
               ],
@@ -177,7 +178,7 @@
                     "value": "FlippableCapability::FlippableBehavior::FlipX"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Flippable",
                     "yes"
                   ]
@@ -200,24 +201,6 @@
       "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-              },
-              "parameters": [
-                "NewText",
-                "Text",
-                "=",
-                "Desgracada.Status"
-              ]
-            }
-          ]
-        },
-        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -225,7 +208,7 @@
                 "value": "StringObjectVariable"
               },
               "parameters": [
-                "Desgracada",
+                "Kid",
                 "Status",
                 "=",
                 "\"Following\""
@@ -243,7 +226,7 @@
                     "value": "Distance"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Sensei",
                     "100",
                     ""
@@ -256,7 +239,7 @@
                     "value": "PathfindingBehavior::SetDestination"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Pathfinding",
                     "",
                     "Sensei.PointX(\"Side_Left\")",
@@ -275,7 +258,7 @@
                 "value": "StringObjectVariable"
               },
               "parameters": [
-                "Desgracada",
+                "Kid",
                 "Status",
                 "=",
                 "\"Fleeing\""
@@ -285,18 +268,47 @@
           "actions": [],
           "events": [
             {
-              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "Distance"
+                    "value": "BooleanObjectVariable"
                   },
                   "parameters": [
-                    "Desgracada",
-                    "Sensei",
-                    "100",
+                    "Kid",
+                    "IsFleeing",
+                    "=",
                     ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "Distance"
+                      },
+                      "parameters": [
+                        "Kid",
+                        "Sensei",
+                        "Kid.FleeingRadius",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Distance"
+                      },
+                      "parameters": [
+                        "Kid",
+                        "Enemy",
+                        "Kid.FleeingRadius",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ],
@@ -306,11 +318,100 @@
                     "value": "PathfindingBehavior::SetDestination"
                   },
                   "parameters": [
-                    "Desgracada",
+                    "Kid",
                     "Pathfinding",
                     "",
-                    "RandomFloatInRange(Sensei.CenterX() - Kid_Girl.FleeingRadius,Sensei.CenterX() + Kid_Girl.FleeingRadius)",
-                    "RandomFloatInRange(Sensei.CenterY() - Kid_Girl.FleeingRadius,Sensei.CenterY() + Kid_Girl.FleeingRadius)"
+                    "Sensei.CenterX() + RandomWithStep(-1,1,1) * Kid.FleeingRadius",
+                    "Sensei.CenterY() + RandomWithStep(-1,1,1) * Kid.FleeingRadius"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "IsFleeing",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "IsFleeing",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::And"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "Distance"
+                          },
+                          "parameters": [
+                            "Kid",
+                            "Sensei",
+                            "Kid.FleeingRadius",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "Distance"
+                          },
+                          "parameters": [
+                            "Kid",
+                            "Enemy",
+                            "Kid.FleeingRadius",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::DestinationReached"
+                      },
+                      "parameters": [
+                        "Kid",
+                        "Pathfinding"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Kid",
+                    "IsFleeing",
+                    "False",
+                    ""
                   ]
                 }
               ]
